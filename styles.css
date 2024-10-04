@@ -374,3 +374,7 @@ iframe {
     max-width: 100%;
   }
 }
+
+* {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
