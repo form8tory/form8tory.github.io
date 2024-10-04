@@ -312,3 +312,29 @@ footer {
 html {
     scroll-behavior: smooth;
 }
+
+#music {
+  padding: 50px;
+  background-color: #f0f0f0; /* Adjust as needed for your color scheme */
+}
+
+.music-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.music-item {
+  text-align: center;
+  max-width: 300px;
+}
+
+.music-item h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+iframe {
+  border-radius: 10px; /* Optional: To give the embeds rounded corners */
+}
