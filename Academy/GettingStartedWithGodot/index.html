@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Godot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #333;
+            font-weight: bold;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        button {
+            background-color: #007ACC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #005b99;
+        }
+
+        .back-button {
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        a {
+            color: #007ACC;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Back Button to Home -->
+    <button class="back-button" onclick="window.location.href='index.html';">Back to Home</button>
+
+    <!-- Course Title -->
+    <h1>Getting Started with Godot</h1>
+    <p>Welcome to the ultimate beginner's guide to learning Godot! Whether you're new to game development or just exploring Godot for the first time, this guide will take you through the core concepts step by step.</p>
+
+    <!-- Section 1: Introduction -->
+    <h2>1. What is Godot?</h2>
+    <p>Godot is an open-source, free-to-use game engine that supports both 2D and 3D game development. With its intuitive editor, a rich set of tools, and the flexible GDScript language, Godot is a great choice for both beginners and experienced developers.</p>
+    <p>Let’s start with installing Godot and creating your first project!</p>
+
+    <button onclick="revealSection('section2')">Next: Installing Godot</button>
+
+    <!-- Section 2: Installing Godot -->
+    <div id="section2" class="hidden">
+        <h2>2. Installing Godot</h2>
+        <p>To get started, you’ll need to download and install Godot. Follow these simple steps:</p>
+        <ol>
+            <li>Go to the <a href="https://godotengine.org/download" target="_blank">Godot download page</a>.</li>
+            <li>Download the latest stable version of Godot for your operating system (Windows, Mac, or Linux).</li>
+            <li>Once downloaded, extract the zip file and run the `Godot.exe` file (on Windows) or the appropriate executable for your OS.</li>
+        </ol>
+        <p>Godot is portable, so no installation is necessary—just open the executable and you’re ready to start building games!</p>
+
+        <button onclick="revealSection('section3')">Next: Your First Project</button>
+    </div>
+
+    <!-- Section 3: Creating Your First Project -->
+    <div id="section3" class="hidden">
+        <h2>3. Creating Your First Project</h2>
+        <p>When you first launch Godot, you’ll see the project manager. Let’s create your first project!</p>
+        <ol>
+            <li>Click the <strong>New Project</strong> button.</li>
+            <li>Name your project (e.g., "MyFirstGame") and choose a folder to save it in.</li>
+            <li>Select whether your project will be 2D or 3D. For this tutorial, choose <strong>2D</strong>.</li>
+            <li>Click <strong>Create & Edit</strong> to open your new project in the Godot editor.</li>
+        </ol>
+
+        <button onclick="revealSection('section4')">Next: Understanding the Interface</button>
+    </div>
+
+    <!-- Section 4: Understanding the Godot Interface -->
+    <div id="section4" class="hidden">
+        <h2>4. Understanding the Godot Interface</h2>
+        <p>The Godot editor might seem overwhelming at first, but here’s a breakdown of the main components:</p>
+        <ul>
+            <li><strong>Scene Tab:</strong> This is where you’ll organize your game’s scenes and nodes.</li>
+            <li><strong>Inspector:</strong> The inspector displays properties for the selected node, allowing you to edit various settings like position, size, and behavior.</li>
+            <li><strong>Viewport:</strong> The main area where you’ll visually design your game world by placing and manipulating nodes.</li>
+            <li><strong>FileSystem:</strong> This is where all your project files and resources are managed.</li>
+        </ul>
+        <p>Feel free to explore the interface and familiarize yourself with how it works!</p>
+
+        <button onclick="revealSection('section5')">Next: Nodes and Scenes</button>
+    </div>
+
+    <!-- Section 5: Nodes and Scenes -->
+    <div id="section5" class="hidden">
+        <h2>5. Understanding Nodes and Scenes</h2>
+        <p>In Godot, everything in your game is organized into <strong>nodes</strong>. Nodes are the building blocks of your game and can represent anything from a sprite, a sound effect, or even complex gameplay elements.</p>
+        <p>Nodes are grouped together to form a <strong>scene</strong>. Think of a scene as a collection of nodes that work together to create a part of your game (for example, a level, a character, or a menu).</p>
+        <p>Here’s how you can create a new node and scene:</p>
+        <ol>
+            <li>Click on the <strong>Scene</strong> menu and select <strong>New Scene</strong>.</li>
+            <li>In the Scene tab, click the <strong>+</strong> button to add a new node.</li>
+            <li>Search for <strong>2D Node</strong> and add it to your scene. This will be the root node of your scene.</li>
+            <li>Save your scene with a relevant name (e.g., "MainScene").</li>
+        </ol>
+
+        <button onclick="revealSection('section6')">Next: Adding a Sprite</button>
+    </div>
+
+    <!-- Section 6: Adding a Sprite -->
+    <div id="section6" class="hidden">
+        <h2>6. Adding a Sprite</h2>
+        <p>Let’s add a sprite to your scene to represent your character or object:</p>
+        <ol>
+            <li>Click the <strong>+</strong> button again and add a <strong>Sprite2D</strong> node as a child of the root node.</li>
+            <li>In the Inspector, under the <strong>Texture</strong> property, click the file icon and select an image file to use as your sprite (you can use any image or download one from the web).</li>
+            <li>Once added, you’ll see your sprite in the viewport. You can drag it around to position it in your scene.</li>
+        </ol>
+
+        <p>Now you have a simple scene with a sprite! Let’s make it do something.</p>
+
+        <button onclick="revealSection('section7')">Next: Writing Your First Script</button>
+    </div>
+
+    <!-- Section 7: Writing Your First Script -->
+    <div id="section7" class="hidden">
+        <h2>7. Writing Your First Script</h2>
+        <p>To make your sprite move or interact with the player, you’ll need to write some code. In Godot, scripts are written in <strong>GDScript</strong>. Let’s add a simple script:</p>
+        <ol>
+            <li>Select the <strong>Sprite2D</strong> node in the Scene tab.</li>
+            <li>Click the <strong>Attach Script</strong> button in the top toolbar.</li>
+            <li>In the dialog that appears, keep the defaults and click <strong>Create</strong>.</li>
+            <li>The script editor will open, and you’ll see a new script attached to your sprite.</li>
+        </ol>
+        <p>Now, add this code to make the sprite move left and right:</p>
+
+        <pre><code>extends Sprite2D
+
+func _process(delta):
+    if Input.is_action_pressed("ui_left"):
+        position.x -= 200 * delta
+    elif Input.is_action_pressed("ui_right"):
+</pre>
+        <p>Once you've added this script, press the <strong>Play</strong> button at the top of the Godot editor to run your game. You should be able to move the sprite left and right using the arrow keys!</p>
+
+        <button onclick="revealSection('section8')">Next: Running the Game</button>
+    </div>
+
+    <!-- Section 8: Running the Game -->
+    <div id="section8" class="hidden">
+        <h2>8. Running the Game</h2>
+        <p>Now that you've written a simple script to move the sprite, it's time to run the game and see it in action.</p>
+        <ol>
+            <li>Click the <strong>Play</strong> button (the triangle icon) at the top of the Godot editor.</li>
+            <li>If this is your first time running the game, you’ll be prompted to select the main scene. Select the scene you created (e.g., <strong>MainScene.tscn</strong>).</li>
+            <li>Click <strong>OK</strong>, and your game will run in a new window.</li>
+        </ol>
+        <p>Use the left and right arrow keys to move the sprite! Congratulations on running your first Godot project!</p>
+
+        <button onclick="revealSection('section9')">Next: What's Next?</button>
+    </div>
+
+    <!-- Section 9: What's Next? -->
+    <div id="section9" class="hidden">
+        <h2>9. What's Next?</h2>
+        <p>Now that you’ve created a basic Godot project, here are some ideas on what you can explore next:</p>
+        <ul>
+            <li>Add more nodes, such as <strong>CollisionShapes</strong> and <strong>PhysicsBodies</strong>, to create interactive objects.</li>
+            <li>Experiment with adding sounds, using the <strong>AudioStreamPlayer</strong> node to play sound effects or background music.</li>
+            <li>Try building a simple game, like a platformer or a top-down shooter, to practice what you've learned.</li>
+        </ul>
+        <p>Don’t hesitate to explore Godot’s official documentation and tutorials to deepen your knowledge.</p>
+
+        <p>Happy game developing!</p>
+    </div>
+
+</div>
+
+<script>
+    function revealSection(sectionId) {
+        document.getElementById(sectionId).classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
