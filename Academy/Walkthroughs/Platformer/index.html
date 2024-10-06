@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Platformer Walkthrough | Godot Game Development Academy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1.5em 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2em auto;
+            padding: 0 1em;
+        }
+
+        section {
+            background-color: #fff;
+            margin-bottom: 2em;
+            padding: 1.5em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5em;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        pre {
+            background-color: #eee;
+            padding: 1em;
+            overflow-x: auto;
+        }
+
+        a {
+            color: #007ACC;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5em;
+            margin-bottom: 1.5em;
+        }
+
+        .next-btn {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            background-color: #007ACC;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5em;
+            float: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Building a Basic 2D Platformer</h1>
+</header>
+
+<div class="container">
+    <!-- Back button -->
+    <a href="index.html" class="back-btn">← Back to Home</a>
+
+    <!-- Walkthrough Content -->
+    <section id="walkthrough">
+        <h2>Step 1: Setting Up the Project</h2>
+        <p>First, open Godot and create a new project. Name it "2D Platformer" and choose a location on your computer where you'd like to save it. Make sure to set the renderer to **2D** mode for this project.</p>
+        <p>After creating the project, you will be brought to the main editor interface. Let's create a new scene for our platformer. Click on the <strong>+</strong> button in the Scene panel to create a new 2D scene.</p>
+
+        <h2>Step 2: Creating the Player</h2>
+        <p>We will start by creating the player character. The player will be a simple rectangle for now, and we will add physics to it later.</p>
+        <ol>
+            <li>In the Scene panel, right-click and select <strong>New Node</strong>.</li>
+            <li>Choose a **KinematicBody2D** as the main node for the player. This node will allow us to add movement and collision detection.</li>
+            <li>Next, add two child nodes: a **Sprite** and a **CollisionShape2D**.</li>
+            <li>For the sprite, you can either use a custom image or just a simple rectangle. For now, we'll use a rectangle.</li>
+        </ol>
+        <p>In the Inspector panel, choose the **RectangleShape2D** for the <strong>CollisionShape2D</strong>. Adjust the size to match the player's sprite.</p>
+        
+        <h2>Step 3: Adding Player Movement</h2>
+        <p>Now we will add movement controls. To do this, we need to write some GDScript to handle the player's movement and jumping.</p>
+        <p>Create a new script for the **KinematicBody2D** by clicking the **Script** icon at the top of the editor. Name the script <code>Player.gd</code> and attach it to the player node.</p>
+
+        <h3>Basic Movement Code:</h3>
+        <pre><code>extends KinematicBody2D
+
+# Variables for movement
+var velocity = Vector2()
+const GRAVITY = 500
+const JUMP_FORCE = -300
+const SPEED = 200
+
+# Called every frame
+func _physics_process(delta):
+    velocity.y += GRAVITY * delta
+
+    if Input.is_action_pressed("ui_right"):
+        velocity.x = SPEED
+    elif Input.is_action_pressed("ui_left"):
+        velocity.x = -SPEED
+    else:
+        velocity.x = 0
+
+    if Input.is_action_just_pressed("ui_up") and is_on_floor():
+        velocity.y = JUMP_FORCE
+
+    velocity = move_and_slide(velocity, Vector2.UP)</code></pre>
+
+        <p>**Explanation:**</p>
+        <ul>
+            <li>We use <code>GRAVITY</code> to apply downward force to the player, making it fall naturally.</li>
+            <li>We add left and right movement using the **ui_right** and **ui_left** actions from the input map.</li>
+            <li>The **ui_up** action is used for jumping, but only when the player is on the floor.</li>
+            <li>The <code>move_and_slide()</code> function moves the player and handles collision detection.</li>
+        </ul>
+
+        <h2>Step 4: Creating Platforms</h2>
+        <p>Let's now create some platforms for our player to jump on. We'll make a simple platform using a **StaticBody2D** and a **CollisionShape2D**.</p>
+        <ol>
+            <li>In the Scene panel, right-click and select <strong>New Node</strong>.</li>
+            <li>Choose a **StaticBody2D** as the main node for the platform.</li>
+            <li>Add a **Sprite** and **CollisionShape2D** as child nodes.</li>
+            <li>In the Inspector panel, choose a **RectangleShape2D** for the <strong>CollisionShape2D</strong> and adjust its size to fit the platform's sprite.</li>
+        </ol>
+        <p>Duplicate the platform as many times as you'd like and position them around the scene for your player to jump on.</p>
+        
+        <h2>Step 5: Adding Collectibles</h2>
+        <p>Now, let's add some collectibles to the game. These will give the player a score when collected.</p>
+        <ol>
+            <li>Create a new scene and add a **Node2D** as the root node.</li>
+            <li>Add a **Sprite** and a **CollisionShape2D** as child nodes.</li>
+            <li>For the sprite, you can use a coin or any small image you prefer.</li>
+            <li>Attach a script to the root node of the collectible scene to handle the player's interaction.</li>
+        </ol>
+        <p>Here's a simple GDScript to detect when the player collects the item:</p>
+        <pre><code>extends Node2D
+
+# Called when the player collides with this collectible
+func _on_Area2D_body_entered(body):
+    if body.is_in_group("player"):
+        queue_free()  # Remove the collectible from the scene</code></pre>
+        <p>Remember to add the player to a group named "player" so the collectible can detect it properly.</p>
+
+        <h2>Step 6: Testing the Game</h2>
+        <p>Once you have the player, platforms, and collectibles set up, click the **Play** button to test your game. You should be able to move the player left and right, jump between platforms, and collect items.</p>
+
+        <h2>Step 7: Adding a Score System</h2>
+        <p>To display the player's score, we need to create a simple score system. Add a **Label** node to the main scene.</p>
+        <pre><code>extends KinematicBody2D
+
+var score = 0
+
+func _on_Collectible_body_entered(body):
+    if body.is_in_group("player"):
+        score += 1
+        get_node("ScoreLabel").text = "Score: " + str(score)
+        queue_free()  # Remove the collectible from the scene</code></pre>
+
+        <h2>Step 8: Adding More Features</h2>
+        <p>Now that you have a basic setup for your 2D platformer, here are some additional features you can implement:</p>
+        <ul>
+            <li><strong>Enemies:</strong> Add enemies to your game using the <code>RigidBody2D</code> node. Implement basic AI for enemies that move back and forth or follow the player.</li>
+            <li><strong>Sound Effects:</strong> Import sound effects for jumping, collecting items, and background music to enhance the gameplay experience. Use the <code>AudioStreamPlayer</code> node to play sounds when actions occur.</li>
+            <li><strong>Level Design:</strong> Create multiple scenes for different levels. Use the Scene panel to organize your levels and connect them through a level selection screen.</li>
+            <li><strong>Health System:</strong> Implement a health system to keep track of the player's lives. Use hearts or another visual indicator to show the player's remaining lives.</li>
+            <li><strong>Animations:</strong> Animate the player character using the <code>AnimationPlayer</code> node for actions like running, jumping, and collecting items.</li>
+        </ul>
+
+        <h2>Next Steps</h2>
+        <p>After implementing these features, consider expanding your game further by adding:</p>
+        <ul>
+            <li><strong>Power-Ups:</strong> Create power-ups that give temporary boosts, such as speed or invincibility.</li>
+            <li><strong>Scoring System:</strong> Implement a scoring system that tracks points and displays high scores at the end of the game.</li>
+            <li><strong>Game Over Screen:</strong> Create a game over screen that appears when the player loses all lives, giving them the option to restart the game.</li>
+            <li><strong>Mobile Controls:</strong> If you plan to publish your game on mobile platforms, consider implementing touch controls.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Congratulations! You have built the foundation of a 2D platformer game in Godot. As you continue developing your game, keep exploring Godot's features and experimenting with different ideas. Don't forget to refer to the Godot documentation for more advanced techniques and tutorials.</p>
+</div>
+
+<footer>
+    <p>&copy; 2024 Godot Game Development Academy. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
