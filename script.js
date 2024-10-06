@@ -46,3 +46,8 @@ const links = document.querySelectorAll('a[href^="#"]');
             targetElement.scrollIntoView({ behavior: 'smooth' });
         });
     }
+
+function toggleMenu() {
+  const navLinks = document.getElementById('nav-links');
+  navLinks.classList.toggle('show');
+}
