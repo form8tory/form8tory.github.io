@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering GDScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2em auto;
+            padding: 1em;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #333;
+            font-weight: bold;
+        }
+
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        button {
+            background-color: #007ACC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #005b99;
+        }
+
+        .back-button {
+            margin-bottom: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        a {
+            color: #007ACC;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Back Button to Home -->
+    <button class="back-button" onclick="window.location.href='index.html';">Back to Home</button>
+
+    <!-- Course Title -->
+    <h1>Mastering GDScript</h1>
+    <p>Welcome to the advanced guide on GDScript, Godot’s built-in scripting language. In this guide, you’ll learn how to leverage the full power of GDScript to create complex and efficient game mechanics.</p>
+
+    <!-- Section 1: Introduction to GDScript -->
+    <h2>1. What is GDScript?</h2>
+    <p>GDScript is Godot's scripting language, designed specifically for game development. It’s a high-level, dynamically typed language that’s simple to learn for beginners, yet powerful enough to create complex systems.</p>
+
+    <p>GDScript is designed to integrate seamlessly with Godot’s engine, making it easy to interact with game objects and scenes. Let’s dive into the basics!</p>
+
+    <button onclick="revealSection('section2')">Next: Writing Your First GDScript</button>
+
+    <!-- Section 2: Writing Your First GDScript -->
+    <div id="section2" class="hidden">
+        <h2>2. Writing Your First GDScript</h2>
+        <p>Let’s start by creating a simple script to move an object on the screen. Follow these steps:</p>
+        <ol>
+            <li>Create a new <strong>2D Scene</strong> in Godot.</li>
+            <li>Add a <strong>Sprite2D</strong> node to the scene and assign a texture (image) to it.</li>
+            <li>Select the <strong>Sprite2D</strong> node and click <strong>Attach Script</strong>.</li>
+            <li>In the dialog that appears, keep the default settings and click <strong>Create</strong>.</li>
+        </ol>
+        <p>In the script editor, you’ll see something like this:</p>
+        
+        <pre><code>extends Sprite2D
+
+func _ready():
+    pass
+</code></pre>
+
+        <p>Now, let’s add some code to move the sprite left and right:</p>
+
+        <pre><code>extends Sprite2D
+
+func _process(delta):
+    if Input.is_action_pressed("ui_left"):
+        position.x -= 200 * delta
+    elif Input.is_action_pressed("ui_right"):
+        position.x += 200 * delta
+</code></pre>
+
+        <p>This code checks for input every frame and moves the sprite left or right depending on which arrow key is pressed. You can test this by running your scene.</p>
+
+        <button onclick="revealSection('section3')">Next: Understanding Variables</button>
+    </div>
+
+    <!-- Section 3: Understanding Variables -->
+    <div id="section3" class="hidden">
+        <h2>3. Understanding Variables</h2>
+        <p>Variables in GDScript are used to store information that can change during gameplay, like player health or position. Here’s a simple example:</p>
+
+        <pre><code>extends Sprite2D
+
+var speed = 200
+
+func _process(delta):
+    if Input.is_action_pressed("ui_left"):
+        position.x -= speed * delta
+    elif Input.is_action_pressed("ui_right"):
+        position.x += speed * delta
+</code></pre>
+
+        <p>In this example, we’ve added a variable called <strong>speed</strong>. By using variables, you can easily adjust values without changing the logic in the script. Experiment by changing the <strong>speed</strong> value and seeing how it affects the movement.</p>
+
+        <button onclick="revealSection('section4')">Next: Using Functions</button>
+    </div>
+
+    <!-- Section 4: Using Functions -->
+    <div id="section4" class="hidden">
+        <h2>4. Using Functions in GDScript</h2>
+        <p>Functions are blocks of code that perform specific tasks. You’ve already seen a function called <strong>_process</strong>, which runs every frame. Let’s create our own function:</p>
+
+        <pre><code>extends Sprite2D
+
+var speed = 200
+
+func move_sprite(delta):
+    if Input.is_action_pressed("ui_left"):
+        position.x -= speed * delta
+    elif Input.is_action_pressed("ui_right"):
+        position.x += speed * delta
+
+func _process(delta):
+    move_sprite(delta)
+</code></pre>
+
+        <p>Here, we’ve moved the movement logic into a separate function called <strong>move_sprite</strong>. The <strong>_process</strong> function now simply calls <strong>move_sprite</strong> each frame, keeping the code clean and organized.</p>
+
+        <button onclick="revealSection('section5')">Next: Signals and Events</button>
+    </div>
+
+    <!-- Section 5: Signals and Events -->
+    <div id="section5" class="hidden">
+        <h2>5. Signals and Events</h2>
+        <p>Signals in Godot are used to send messages between nodes when certain events happen. For example, when a button is pressed, or when an object enters a certain area, a signal can be emitted. Here's an example of connecting a signal:</p>
+
+        <pre><code>extends Button
+
+func _ready():
+    connect("pressed", self, "_on_button_pressed")
+
+func _on_button_pressed():
+    print("Button Pressed!")
+</code></pre>
+
+        <p>In this example, the <strong>pressed</strong> signal is connected to the <strong>_on_button_pressed</strong> function. When the button is pressed, the function will be called, and you’ll see “Button Pressed!” printed in the output.</p>
+
+        <button onclick="revealSection('section6')">Next: Arrays and Dictionaries</button>
+    </div>
+
+    <!-- Section 6: Arrays and Dictionaries -->
+    <div id="section6" class="hidden">
+        <h2>6. Arrays and Dictionaries</h2>
+        <p>GDScript supports arrays and dictionaries to store collections of data. Arrays are used for ordered lists, while dictionaries store key-value pairs. Here’s a simple example of both:</p>
+
+        <pre><code>extends Node
+
+var my_array = [1, 2, 3]
+var my_dict = {"name": "Player", "health": 100}
+
+func _ready():
+    print(my_array[0])  # Outputs: 1
+    print(my_dict["name"])  # Outputs: Player
+</code></pre>
+
+        <p>Arrays and dictionaries can be used to handle complex data, such as player inventories, game settings, and more.</p>
+
+        <button onclick="revealSection('section7')">Next: Loops and Conditionals</button>
+    </div>
+
+    <!-- Section 7: Loops and Conditionals -->
+    <div id="section7" class="hidden">
+        <h2>7. Loops and Conditionals</h2>
+        <p>Loops allow you to repeat code multiple times, while conditionals let you execute code based on certain conditions. Here’s an example of a simple loop and an if-statement:</p>
+
+        <pre><code>extends Node
+
+func _ready():
+    for i in range(5):
+        print(i)  # Prints numbers 0 to 4
+
+    var score = 50
+    if score > 100:
+        print("High Score!")
+    else:
+        print("Keep Trying!")
+</code></pre>
+
+        <p>This code demonstrates how to use loops to repeat actions and conditionals to perform different actions based on specific conditions.</p>
+<button onclick="revealSection('section8')">Next: Object-Oriented Programming</button>
+    </div>
+
+    <!-- Section 8: Object-Oriented Programming (OOP) -->
+    <div id="section8" class="hidden">
+        <h2>8. Object-Oriented Programming (OOP) in GDScript</h2>
+        <p>GDScript is an object-oriented programming (OOP) language, meaning you can create objects that contain both data and behavior. In GDScript, everything is a Node or inherits from a Node. Here’s how you can create and extend classes:</p>
+        
+        <h3>Creating a Class</h3>
+        <pre><code>class_name Player
+
+var health = 100
+
+func take_damage(amount):
+    health -= amount
+    print("Health: ", health)
+</code></pre>
+        <p>Here, we define a simple <strong>Player</strong> class with a variable <strong>health</strong> and a method <strong>take_damage</strong>. This class can be used by other scripts to create <strong>Player</strong> objects.</p>
+
+        <h3>Inheriting from Another Class</h3>
+        <pre><code>extends Player
+
+func _ready():
+    print("Player Ready")
+    take_damage(20)  # Inherited from the Player class
+</code></pre>
+        <p>In this example, we create a new class that extends the <strong>Player</strong> class. We inherit the <strong>take_damage</strong> method and call it in the new class, demonstrating how inheritance works in GDScript.</p>
+
+        <p>OOP allows you to build complex systems by reusing and extending existing code, reducing redundancy and improving code organization.</p>
+
+        <button onclick="revealSection('section9')">Next: Conclusion</button>
+    </div>
+
+    <!-- Section 9: Conclusion -->
+    <div id="section9" class="hidden">
+        <h2>9. Conclusion</h2>
+        <p>Congratulations! You've now mastered the basics of GDScript and object-oriented programming in Godot. From here, you can explore advanced topics, such as:</p>
+        <ul>
+            <li>Advanced signals and delegates</li>
+            <li>Creating custom nodes</li>
+            <li>Working with 3D scenes and physics</li>
+            <li>Optimizing your game using multithreading</li>
+        </ul>
+        <p>Keep practicing and experimenting with GDScript to enhance your skills. Don't hesitate to check out the official <a href="https://docs.godotengine.org/en/stable/" target="_blank">Godot Documentation</a> for more advanced guides and tutorials.</p>
+        <p>Happy coding and game development!</p>
+    </div>
+
+</div>
+
+<script>
+    function revealSection(sectionId) {
+        document.getElementById(sectionId).classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
