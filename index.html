@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form8tory Games & Music - Indie Game Development and Original Music</title>
+<!-- Add this link to the <head> section of your HTML -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="Icon.ico">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
@@ -14,18 +16,15 @@
 </head>
 <body>
     <header>
-        <nav aria-label="Main Navigation">
-            <div class="nav-container">
-                <h1>Form8tory Games & Music <img src="Icon.gif" alt="Form8tory Games Icon"></h1>
-                <ul class="nav-links">
-                    <li><a href="#intro" data-aos="fade-down">Intro</a></li>
-                    <li><a href="#subscribe" data-aos="fade-down">Subscribe</a></li>
-                    <li><a href="#follow" data-aos="fade-down">Follow Us!</a></li>
-                    <li><a href="#games" data-aos="fade-down">Games</a></li>
-                    <li><a href="#music" data-aos="fade-down">Music</a></li>
-                </ul>
-            </div>
-        </nav>
+        <nav>
+  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> <!-- Hamburger icon -->
+  <ul id="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
     </header>
 
     <main>
