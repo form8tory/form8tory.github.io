@@ -1,0 +1,431 @@
+/* =========================================
+   Reset & Base Styles
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Unified font-family */
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* =========================================
+   Header & Navigation
+   ========================================= */
+header {
+    background-color: #3E4857; /* Dark background for contrast */
+    color: white; /* Text color */
+    padding: 15px 20px; /* Padding around the header */
+    position: sticky; /* Sticky navigation */
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex; /* Aligns items in a row */
+    justify-content: space-between; /* Space between title and links */
+    align-items: center; /* Vertically centers items */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 24px; /* Size of the title */
+    display: flex; /* Aligns title and icon */
+    align-items: center; /* Vertically centers icon with text */
+}
+
+header img {
+    margin-left: 10px;
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+}
+
+.nav-links {
+    list-style: none; /* Removes bullet points */
+    display: flex; /* Aligns links in a row */
+    gap: 20px; /* Space between links */
+}
+
+.nav-links a {
+    position: relative;
+    color: white; /* Link color */
+    text-decoration: none; /* Removes underline */
+    padding: 8px 12px; /* Padding around links */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Smooth transition */
+    border-radius: 4px; /* Rounded corners */
+    font-weight: bold;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: translateX(0);
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+    transform: scale(1.05);
+}
+
+/* =========================================
+   Main Content Styling
+   ========================================= */
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+section {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Fade-In Animation */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   Section Specific Styles
+   ========================================= */
+
+/* Intro Section */
+.intro h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.intro p {
+    font-size: 1.2rem;
+}
+
+/* Subscribe Section */
+.subscribe h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Follow Section */
+.follow h2 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.follow ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.follow ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db; /* Button background color */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Make text bold */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
+}
+
+.follow ul li a:hover {
+    background-color: #2980b9; /* Darken background on hover */
+    transform: scale(1.05);
+}
+
+/* Games Section */
+.games-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.Game {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 300px;
+    text-align: left;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 0.3s;
+}
+
+.Game h3 {
+    margin-bottom: 0.5rem;
+    color: #3E4857;
+}
+
+.Game img {
+    width: 100%; /* Full width for better responsiveness */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 4px solid #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.Game img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.Game p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.Game a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.Game a:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Music Section */
+#music {
+    padding: 50px 20px;
+    color: #fff;
+    text-align: center;
+}
+
+#music h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.music-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased gap for better spacing */
+    justify-content: center; /* Center-aligns the embeds */
+}
+
+.music-item {
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px; /* Adds rounded corners */
+    background-color: rgba(0, 0, 0, 0.3); /* Slight transparency for a nice overlay effect */
+    padding: 15px;
+}
+
+.music-item h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 380px;
+    border-radius: 10px; /* Adds a nice rounded corner */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Shadow to make the embeds stand out */
+}
+
+.music-item:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+}
+
+/* =========================================
+   Godot Academy Section
+   ========================================= */
+.academy-section {
+    padding: 60px 20px;
+    background-color: #f4f4f4; /* Light background for contrast */
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.academy-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.academy-section .academy-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-family: 'Arial', sans-serif;
+}
+
+.academy-section .academy-link {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #1e90ff; /* Bright blue for the button */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.academy-section .academy-link:hover {
+    background-color: #0c7cd5; /* Darker blue on hover */
+}
+
+/* =========================================
+   Form Styling
+   ========================================= */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+input[type="email"],
+input[type="text"] {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: #3E4857;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Spinner Animation */
+.spinner {
+    animation: spin 1s linear infinite;
+    width: 20px;
+    height: 20px;
+    fill: #FFFFFF;
+    margin-right: 10px;
+    display: none; /* Hidden by default */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   Footer Styling
+   ========================================= */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #3E4857;
+    color: #fff;
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/* =========================================
+   Responsive Design
+   ========================================= */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li {
+        margin-bottom: 10px;
+    }
+
+    .games-section,
+    .music-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Game,
+    .music-item {
+        max-width: 90%;
+    }
+
+    .academy-section h2 {
+        font-size: 2rem;
+    }
+
+    .academy-section .academy-content p {
+        font-size: 1rem;
+    }
+}
