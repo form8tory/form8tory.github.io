@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form8tory Music - Original Tracks and Playlists</title>
+    <link rel="icon" href="Icon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <meta name="description" content="Form8tory - Listen to original music tracks and explore playlists by Nathaniel Peterson. Discover new releases and stay updated with the latest music projects." />
+    <meta name="author" content="Nathaniel Peterson" />
+    <meta name="keywords" content="Form8tory, Nathaniel Peterson, music, original music, Spotify, playlists, listen to music" />
+</head>
+<body>
+    <header>
+        <nav aria-label="Main Navigation">
+            <div class="nav-container">
+                <h1>
+                    Form8tory Music
+                    <img src="Icon.gif" alt="Form8tory Music Icon">
+                </h1>
+                <ul class="nav-links">
+                    <li><a href="#intro" data-aos="fade-down">Intro</a></li>
+                    <li><a href="#subscribe" data-aos="fade-down">Subscribe</a></li>
+                    <li><a href="#follow" data-aos="fade-down">Follow Us!</a></li>
+                    <li><a href="#music" data-aos="fade-down">Music</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Intro Section -->
+        <section class="intro fade-in" id="intro" data-aos="fade-up">
+            <h2>Welcome to Form8tory Music</h2>
+            <p>Listen to original tracks, explore playlists, and stay connected with the latest music from Nathaniel Peterson.</p>
+        </section>
+
+        <!-- Subscribe Section -->
+        <section class="subscribe fade-in" id="subscribe" data-aos="fade-up">
+            <h2>Subscribe</h2>
+            <div class="sib-form" style="text-align: center; background-color: #EFF2F7;">
+                <!-- Subscription form code here as needed -->
+            </div>
+        </section>
+
+        <!-- Follow Section -->
+        <section class="follow fade-in" id="follow" data-aos="fade-up">
+            <h2>Follow Me!</h2>
+            <ul>
+                <li><a href="https://github.com/form8tory" data-aos="fade-up">Github</a></li>
+                <li><a href="https://discord.com/invite/JJ9pdrTRcw" data-aos="fade-up">Discord Server</a></li>
+                <li><a href="https://linktr.ee/Form8tory" data-aos="fade-up">Linktree</a></li>
+            </ul>
+        </section>
+
+        <!-- Music Section -->
+        <section id="music">
+            <h2>Music</h2>
+            <div class="music-container">
+                <!-- All Songs Playlist Embed -->
+                <div class="music-item" data-aos="fade-up">
+                    <h3>All Songs</h3>
+                    <iframe src="https://open.spotify.com/embed/playlist/2q2SfeDqal9xs1Hga6m359?utm_source=generator" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+
+                <!-- Latest Release Embed -->
+                <div class="music-item" data-aos="fade-up">
+                    <h3>Latest Release (November 4th)</h3>
+                    <iframe src="https://open.spotify.com/embed/track/6hrYqQNrm7HlCuuTjpbxhC?utm_source=generator" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 By Form8tory, Nathaniel Peterson.</p>
+    </footer>
+
+    <!-- External Scripts -->
+    <script src="scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>
